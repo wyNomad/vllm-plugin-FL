@@ -1,10 +1,12 @@
-"""Use FlagGems for prefill and Triton for uniform single-token decode.
+"""Use FlagGems for prefill-only batches and Triton when decoding is mixed in.
 
 This backend is experimental.  The FlagGems cache layout is kept for writes;
 Triton receives a strided view of the same KV storage for decode reads.
 """
 
 from dataclasses import dataclass
+
+import torch
 
 from vllm.v1.attention.backend import AttentionType
 from vllm.v1.attention.backends.triton_attn import (
@@ -38,11 +40,15 @@ class HybridAttentionMetadataBuilder(AttentionFLMetadataBuilder):
             common_prefix_len, common_attn_metadata, fast_build=fast_build
         )
         triton = None
-        if (
-            flaggems.max_query_len == 1
-            and not flaggems.use_cascade
-            and self.dcp_world_size == 1
-        ):
+        use_triton = flaggems.max_query_len == 1
+        if not use_triton and self.dcp_world_size == 1 and not flaggems.use_cascade:
+            # A chunked prefill may share its batch with single-token decode.
+            # Route that entire batch to Triton so decode does not wait for the
+            # FlagGems kernel. query_start_loc_cpu is already on the host.
+            starts = common_attn_metadata.query_start_loc_cpu
+            query_lens = starts[1:] - starts[:-1]
+            use_triton = bool(torch.any(query_lens == 1))
+        if use_triton and not flaggems.use_cascade and self.dcp_world_size == 1:
             triton = self.triton_builder.build(
                 common_prefix_len, common_attn_metadata, fast_build=fast_build
             )
