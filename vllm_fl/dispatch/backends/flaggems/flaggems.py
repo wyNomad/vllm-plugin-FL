@@ -176,6 +176,13 @@ class FlagGemsBackend(Backend):
         if use_sparse:
             raise ValueError("use_sparse=True requires use_mla=True.")
 
+        use_hybrid_attn = os.environ.get(
+            "VLLM_FL_USE_HYBRID_ATTN", "0"
+        ).lower() in ("1", "true", "yes")
+        if use_hybrid_attn:
+            print("Using experimental FlagGems-prefill/Triton-decode backend.")
+            return "vllm_fl.dispatch.backends.flaggems.impl.hybrid_attention.HybridAttentionBackend"
+
         use_flaggems_attn = os.environ.get(
             "VLLM_FL_USE_FLAGGEMS_ATTN", "0"
         ).lower() in ("1", "true", "yes")
