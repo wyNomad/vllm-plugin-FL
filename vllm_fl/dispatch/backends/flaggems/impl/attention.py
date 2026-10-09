@@ -50,6 +50,9 @@ logger = init_logger(__name__)
 
 class AttentionFLBackend(AttentionBackend):
     accept_output_buffer: bool = True
+    # vLLM skips its separate KV-cache update when this defaults to True.
+    # AttentionFLImpl.forward only reads the cache; do_kv_cache_update writes it.
+    forward_includes_kv_cache_update: ClassVar[bool] = False
     supported_dtypes: ClassVar[list[torch.dtype]] = [torch.float16, torch.bfloat16]
 
     @staticmethod
