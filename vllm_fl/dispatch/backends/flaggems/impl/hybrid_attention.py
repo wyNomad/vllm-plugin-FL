@@ -1,7 +1,7 @@
 """Use FlagGems for prefill-only batches and Triton when decoding is mixed in.
 
-This backend is experimental.  The FlagGems cache layout is kept for writes;
-Triton receives a strided view of the same KV storage for decode reads.
+This backend is experimental.  By default FlagGems owns the cache layout and
+Triton reads a strided view; a diagnostic switch can invert the physical layout.
 """
 
 from dataclasses import dataclass
@@ -11,10 +11,12 @@ import torch
 
 from vllm.v1.attention.backend import AttentionType
 from vllm.v1.attention.backends.triton_attn import (
+    TritonAttentionBackend,
     TritonAttentionImpl,
     TritonAttentionMetadata,
     TritonAttentionMetadataBuilder,
 )
+from vllm.v1.attention.backends.utils import get_kv_cache_layout
 
 from .attention import (
     AttentionFLBackend,
@@ -27,6 +29,13 @@ from .attention import (
 @dataclass
 class HybridAttentionMetadata(AttentionFLMetadata):
     triton_metadata: TritonAttentionMetadata | None = None
+
+
+def _use_native_triton_layout():
+    enabled = os.environ.get("VLLM_FL_HYBRID_NATIVE_TRITON_LAYOUT") == "1"
+    if enabled and get_kv_cache_layout() != "NHD":
+        raise ValueError("native Triton layout experiment requires NHD KV cache")
+    return enabled
 
 
 class HybridAttentionMetadataBuilder(AttentionFLMetadataBuilder):
@@ -73,14 +82,21 @@ class HybridAttentionImpl(AttentionFLImpl):
         self.use_triton_kv_update = (
             os.environ.get("VLLM_FL_HYBRID_TRITON_KV_UPDATE") == "1"
         )
+        self.native_triton_layout = _use_native_triton_layout()
+
+    def _flaggems_cache(self, kv_cache):
+        return kv_cache.transpose(0, 1) if self.native_triton_layout else kv_cache
+
+    def _triton_cache(self, kv_cache):
+        return kv_cache if self.native_triton_layout else kv_cache.transpose(0, 1)
 
     def do_kv_cache_update(self, layer, key, value, kv_cache, slot_mapping):
         if self.use_triton_kv_update:
             return self.triton_impl.do_kv_cache_update(
-                layer, key, value, kv_cache.transpose(0, 1), slot_mapping
+                layer, key, value, self._triton_cache(kv_cache), slot_mapping
             )
         return super().do_kv_cache_update(
-            layer, key, value, kv_cache, slot_mapping
+            layer, key, value, self._flaggems_cache(kv_cache), slot_mapping
         )
 
     def forward(
@@ -100,15 +116,13 @@ class HybridAttentionImpl(AttentionFLImpl):
             and attn_metadata is not None
             and attn_metadata.triton_metadata is not None
         ):
-            # FlagGems stores [K/V, blocks, slots, heads, dim], while Triton
-            # expects [blocks, K/V, slots, heads, dim].  This is only a view;
-            # unified_attention uses the tensor strides for KV reads.
+            # The inactive layout is a strided view of the same KV storage.
             return self.triton_impl.forward(
                 layer,
                 query,
                 key,
                 value,
-                kv_cache.transpose(0, 1),
+                self._triton_cache(kv_cache),
                 attn_metadata.triton_metadata,
                 output,
                 output_scale,
@@ -119,7 +133,7 @@ class HybridAttentionImpl(AttentionFLImpl):
             query,
             key,
             value,
-            kv_cache,
+            self._flaggems_cache(kv_cache),
             attn_metadata,
             output,
             output_scale,
@@ -128,6 +142,22 @@ class HybridAttentionImpl(AttentionFLImpl):
 
 
 class HybridAttentionBackend(AttentionFLBackend):
+    @staticmethod
+    def get_kv_cache_shape(
+        num_blocks, block_size, num_kv_heads, head_size, cache_dtype_str="auto"
+    ):
+        backend = (TritonAttentionBackend if _use_native_triton_layout()
+                   else AttentionFLBackend)
+        return backend.get_kv_cache_shape(
+            num_blocks, block_size, num_kv_heads, head_size, cache_dtype_str
+        )
+
+    @staticmethod
+    def get_kv_cache_stride_order(include_num_layers_dimension=False):
+        backend = (TritonAttentionBackend if _use_native_triton_layout()
+                   else AttentionFLBackend)
+        return backend.get_kv_cache_stride_order(include_num_layers_dimension)
+
     @staticmethod
     def get_impl_cls():
         return HybridAttentionImpl
