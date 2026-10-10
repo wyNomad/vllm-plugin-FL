@@ -37,6 +37,13 @@ class HybridAttentionMetadataBuilder(AttentionFLMetadataBuilder):
         )
         # Diagnostic only: isolate the cost of routing from prefill kernels.
         self.force_triton = os.environ.get("VLLM_FL_HYBRID_FORCE_TRITON") == "1"
+        # Experimental: keep large mixed prefill/decode batches on FlagGems.
+        # A zero threshold preserves the original route for all mixed batches.
+        self.mixed_prefill_min_tokens = int(
+            os.environ.get("VLLM_FL_HYBRID_MIXED_PREFILL_MIN_TOKENS", "0")
+        )
+        if self.mixed_prefill_min_tokens < 0:
+            raise ValueError("mixed prefill threshold must be non-negative")
 
     def build(self, common_prefix_len, common_attn_metadata, fast_build=False):
         flaggems = super().build(
@@ -46,11 +53,16 @@ class HybridAttentionMetadataBuilder(AttentionFLMetadataBuilder):
         use_triton = self.force_triton or flaggems.max_query_len == 1
         if not use_triton and self.dcp_world_size == 1 and not flaggems.use_cascade:
             # A chunked prefill may share its batch with single-token decode.
-            # Route that entire batch to Triton so decode does not wait for the
-            # FlagGems kernel. query_start_loc_cpu is already on the host.
+            # Decode normally selects Triton for the whole batch. An explicit
+            # threshold can keep large mixed prefill chunks on FlagGems.
+            # query_start_loc_cpu is already on the host.
             starts = common_attn_metadata.query_start_loc_cpu
             query_lens = starts[1:] - starts[:-1]
-            use_triton = bool(torch.any(query_lens == 1))
+            has_decode = bool(torch.any(query_lens == 1))
+            use_triton = has_decode and (
+                self.mixed_prefill_min_tokens == 0
+                or flaggems.max_query_len < self.mixed_prefill_min_tokens
+            )
         if use_triton and not flaggems.use_cascade and self.dcp_world_size == 1:
             triton = self.triton_builder.build(
                 common_prefix_len, common_attn_metadata, fast_build=fast_build
