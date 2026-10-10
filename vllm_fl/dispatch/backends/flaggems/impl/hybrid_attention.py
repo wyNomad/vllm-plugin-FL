@@ -5,6 +5,7 @@ Triton receives a strided view of the same KV storage for decode reads.
 """
 
 from dataclasses import dataclass
+import os
 
 import torch
 
@@ -34,13 +35,15 @@ class HybridAttentionMetadataBuilder(AttentionFLMetadataBuilder):
         self.triton_builder = TritonAttentionMetadataBuilder(
             kv_cache_spec, layer_names, vllm_config, device
         )
+        # Diagnostic only: isolate the cost of routing from prefill kernels.
+        self.force_triton = os.environ.get("VLLM_FL_HYBRID_FORCE_TRITON") == "1"
 
     def build(self, common_prefix_len, common_attn_metadata, fast_build=False):
         flaggems = super().build(
             common_prefix_len, common_attn_metadata, fast_build=fast_build
         )
         triton = None
-        use_triton = flaggems.max_query_len == 1
+        use_triton = self.force_triton or flaggems.max_query_len == 1
         if not use_triton and self.dcp_world_size == 1 and not flaggems.use_cascade:
             # A chunked prefill may share its batch with single-token decode.
             # Route that entire batch to Triton so decode does not wait for the
@@ -66,6 +69,19 @@ class HybridAttentionImpl(AttentionFLImpl):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.triton_impl = TritonAttentionImpl(*args, **kwargs)
+        # Diagnostic only: compare KV update kernels with the same cache layout.
+        self.use_triton_kv_update = (
+            os.environ.get("VLLM_FL_HYBRID_TRITON_KV_UPDATE") == "1"
+        )
+
+    def do_kv_cache_update(self, layer, key, value, kv_cache, slot_mapping):
+        if self.use_triton_kv_update:
+            return self.triton_impl.do_kv_cache_update(
+                layer, key, value, kv_cache.transpose(0, 1), slot_mapping
+            )
+        return super().do_kv_cache_update(
+            layer, key, value, kv_cache, slot_mapping
+        )
 
     def forward(
         self,
