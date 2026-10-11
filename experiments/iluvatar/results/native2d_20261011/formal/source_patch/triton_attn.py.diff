@@ -1,0 +1,18 @@
+--- triton_attn.py.original
++++ triton_attn.py.probe
+@@ -620,8 +620,13 @@
+                 )
+                 else None
+             )
+-            k_descale = layer._k_scale.expand(descale_shape)
+-            v_descale = layer._v_scale.expand(descale_shape)
++            # Non-quantized KV does not have a descale. Keep quantized paths intact.
++            if self._kv_quant_mode == KVQuantMode.NONE:
++                k_descale = None
++                v_descale = None
++            else:
++                k_descale = layer._k_scale.expand(descale_shape)
++                v_descale = layer._v_scale.expand(descale_shape)
+             k_scale_cache = None
+             v_scale_cache = None
+ 

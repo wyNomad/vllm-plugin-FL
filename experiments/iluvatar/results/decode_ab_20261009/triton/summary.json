@@ -1,0 +1,34 @@
+[
+  {
+    "variant": "triton",
+    "case": "warmup",
+    "input_tokens": 512,
+    "output_tokens": 16,
+    "concurrency": 1,
+    "requests": 1,
+    "seed": 511,
+    "exit_code": 0,
+    "successful_requests": 1.0,
+    "failed_requests": 0.0,
+    "total_tokens_per_s": 18.87,
+    "mean_ttft_ms": 27814.92,
+    "cached_tokens_delta": 0.0,
+    "preemptions_delta": 0.0
+  },
+  {
+    "variant": "triton",
+    "case": "decode",
+    "input_tokens": 512,
+    "output_tokens": 1024,
+    "concurrency": 8,
+    "requests": 8,
+    "seed": 512,
+    "exit_code": 0,
+    "successful_requests": 8.0,
+    "failed_requests": 0.0,
+    "total_tokens_per_s": 188.76,
+    "mean_ttft_ms": 39167.54,
+    "cached_tokens_delta": 0.0,
+    "preemptions_delta": 0.0
+  }
+]

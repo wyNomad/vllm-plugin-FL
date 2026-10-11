@@ -1,0 +1,46 @@
+{
+  "device": "Iluvatar BI-V150",
+  "dtype": "torch.bfloat16",
+  "blocks": 1024,
+  "block_size": 16,
+  "kv_heads": 2,
+  "head_dim": 128,
+  "cases": [
+    {
+      "num_tokens": 64,
+      "timings": {
+        "flaggems_layout_write": {
+          "gpu_ms_per_call": 0.11318119049072266,
+          "wall_ms_per_call": 0.1797664212062955
+        },
+        "triton_on_flaggems_layout": {
+          "gpu_ms_per_call": 0.15053999900817872,
+          "wall_ms_per_call": 0.214485009200871
+        },
+        "triton_native_layout_write": {
+          "gpu_ms_per_call": 0.07016830921173095,
+          "wall_ms_per_call": 0.1069680298678577
+        }
+      },
+      "identical_cache": true
+    },
+    {
+      "num_tokens": 2048,
+      "timings": {
+        "flaggems_layout_write": {
+          "gpu_ms_per_call": 0.04750627040863037,
+          "wall_ms_per_call": 0.0651835510507226
+        },
+        "triton_on_flaggems_layout": {
+          "gpu_ms_per_call": 0.06140334606170654,
+          "wall_ms_per_call": 0.09024100145325065
+        },
+        "triton_native_layout_write": {
+          "gpu_ms_per_call": 0.05445946216583252,
+          "wall_ms_per_call": 0.08202024037018418
+        }
+      },
+      "identical_cache": true
+    }
+  ]
+}

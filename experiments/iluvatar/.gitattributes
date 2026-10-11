@@ -1,0 +1,4 @@
+# Keep benchmark evidence byte-identical to the original archived files.
+results/**/*.csv -text -whitespace
+results/**/*.diff -text -whitespace
+results/**/*.txt -text -whitespace

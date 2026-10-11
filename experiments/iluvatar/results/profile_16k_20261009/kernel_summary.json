@@ -1,0 +1,394 @@
+{
+  "prefill_16k": {
+    "trace": "rank0.1791536469083981413.pt.trace.json.gz",
+    "cuda_graph_launches": 0,
+    "all": {
+      "kernel_calls": 3776,
+      "gpu_kernel_time_ms": 14596.99,
+      "top_kernels": [
+        {
+          "name": "kernel_unified_attention",
+          "calls": 336,
+          "time_ms": 13552.542,
+          "share_percent": 92.84
+        },
+        {
+          "name": "mm_kernel",
+          "calls": 1344,
+          "time_ms": 899.736,
+          "share_percent": 6.16
+        },
+        {
+          "name": "triton_poi_fused_mul_silu_slice_1",
+          "calls": 336,
+          "time_ms": 46.429,
+          "share_percent": 0.32
+        },
+        {
+          "name": "triton_red_fused_fused_add_rms_norm_2",
+          "calls": 336,
+          "time_ms": 27.777,
+          "share_percent": 0.19
+        },
+        {
+          "name": "triton_poi_fused_3",
+          "calls": 328,
+          "time_ms": 26.997,
+          "share_percent": 0.18
+        },
+        {
+          "name": "triton_red_fused_fused_add_rms_norm_0",
+          "calls": 336,
+          "time_ms": 16.898,
+          "share_percent": 0.12
+        },
+        {
+          "name": "reshape_and_cache_kernel_flash",
+          "calls": 336,
+          "time_ms": 10.263,
+          "share_percent": 0.07
+        },
+        {
+          "name": "linear_kernel",
+          "calls": 8,
+          "time_ms": 6.674,
+          "share_percent": 0.05
+        },
+        {
+          "name": "sweep",
+          "calls": 64,
+          "time_ms": 3.877,
+          "share_percent": 0.03
+        },
+        {
+          "name": "compute_global_hist_kernel",
+          "calls": 8,
+          "time_ms": 2.277,
+          "share_percent": 0.02
+        },
+        {
+          "name": "triton_poi_fused_1",
+          "calls": 8,
+          "time_ms": 0.659,
+          "share_percent": 0.0
+        },
+        {
+          "name": "softmax_kernel_inner",
+          "calls": 16,
+          "time_ms": 0.513,
+          "share_percent": 0.0
+        },
+        {
+          "name": "argmax_kernel_inner",
+          "calls": 8,
+          "time_ms": 0.4,
+          "share_percent": 0.0
+        },
+        {
+          "name": "triton_red_fused__to_copy_embedding_rms_norm_0",
+          "calls": 8,
+          "time_ms": 0.293,
+          "share_percent": 0.0
+        },
+        {
+          "name": "zeros_kernel",
+          "calls": 72,
+          "time_ms": 0.25,
+          "share_percent": 0.0
+        }
+      ]
+    }
+  },
+  "prefill_and_decode_16k": {
+    "trace": "rank0.1791536636673100979.pt.trace.json.gz",
+    "cuda_graph_launches": 15,
+    "all": {
+      "kernel_calls": 4556,
+      "gpu_kernel_time_ms": 14631.496,
+      "top_kernels": [
+        {
+          "name": "kernel_unified_attention",
+          "calls": 336,
+          "time_ms": 13559.367,
+          "share_percent": 92.67
+        },
+        {
+          "name": "mm_kernel",
+          "calls": 1344,
+          "time_ms": 898.858,
+          "share_percent": 6.14
+        },
+        {
+          "name": "triton_poi_fused_mul_silu_slice_1",
+          "calls": 336,
+          "time_ms": 46.417,
+          "share_percent": 0.32
+        },
+        {
+          "name": "triton_red_fused_fused_add_rms_norm_2",
+          "calls": 336,
+          "time_ms": 27.764,
+          "share_percent": 0.19
+        },
+        {
+          "name": "triton_poi_fused_3",
+          "calls": 328,
+          "time_ms": 27.029,
+          "share_percent": 0.18
+        },
+        {
+          "name": "linear_kernel",
+          "calls": 23,
+          "time_ms": 18.967,
+          "share_percent": 0.13
+        },
+        {
+          "name": "triton_red_fused_fused_add_rms_norm_0",
+          "calls": 336,
+          "time_ms": 16.91,
+          "share_percent": 0.12
+        },
+        {
+          "name": "sweep",
+          "calls": 184,
+          "time_ms": 11.135,
+          "share_percent": 0.08
+        },
+        {
+          "name": "reshape_and_cache_kernel_flash",
+          "calls": 336,
+          "time_ms": 10.289,
+          "share_percent": 0.07
+        },
+        {
+          "name": "compute_global_hist_kernel",
+          "calls": 23,
+          "time_ms": 6.537,
+          "share_percent": 0.04
+        },
+        {
+          "name": "softmax_kernel_inner",
+          "calls": 46,
+          "time_ms": 1.477,
+          "share_percent": 0.01
+        },
+        {
+          "name": "argmax_kernel_inner",
+          "calls": 23,
+          "time_ms": 1.15,
+          "share_percent": 0.01
+        },
+        {
+          "name": "zeros_kernel",
+          "calls": 207,
+          "time_ms": 0.717,
+          "share_percent": 0.0
+        },
+        {
+          "name": "triton_poi_fused_1",
+          "calls": 8,
+          "time_ms": 0.658,
+          "share_percent": 0.0
+        },
+        {
+          "name": "_to_copy_func_kernel_rank_1",
+          "calls": 92,
+          "time_ms": 0.407,
+          "share_percent": 0.0
+        }
+      ]
+    },
+    "before_first_graph_launch": {
+      "kernel_calls": 3780,
+      "gpu_kernel_time_ms": 14603.008,
+      "top_kernels": [
+        {
+          "name": "kernel_unified_attention",
+          "calls": 336,
+          "time_ms": 13559.367,
+          "share_percent": 92.85
+        },
+        {
+          "name": "mm_kernel",
+          "calls": 1344,
+          "time_ms": 898.858,
+          "share_percent": 6.16
+        },
+        {
+          "name": "triton_poi_fused_mul_silu_slice_1",
+          "calls": 336,
+          "time_ms": 46.417,
+          "share_percent": 0.32
+        },
+        {
+          "name": "triton_red_fused_fused_add_rms_norm_2",
+          "calls": 336,
+          "time_ms": 27.764,
+          "share_percent": 0.19
+        },
+        {
+          "name": "triton_poi_fused_3",
+          "calls": 328,
+          "time_ms": 27.029,
+          "share_percent": 0.19
+        },
+        {
+          "name": "triton_red_fused_fused_add_rms_norm_0",
+          "calls": 336,
+          "time_ms": 16.91,
+          "share_percent": 0.12
+        },
+        {
+          "name": "reshape_and_cache_kernel_flash",
+          "calls": 336,
+          "time_ms": 10.289,
+          "share_percent": 0.07
+        },
+        {
+          "name": "linear_kernel",
+          "calls": 8,
+          "time_ms": 6.672,
+          "share_percent": 0.05
+        },
+        {
+          "name": "sweep",
+          "calls": 64,
+          "time_ms": 3.885,
+          "share_percent": 0.03
+        },
+        {
+          "name": "compute_global_hist_kernel",
+          "calls": 8,
+          "time_ms": 2.275,
+          "share_percent": 0.02
+        },
+        {
+          "name": "triton_poi_fused_1",
+          "calls": 8,
+          "time_ms": 0.658,
+          "share_percent": 0.0
+        },
+        {
+          "name": "softmax_kernel_inner",
+          "calls": 16,
+          "time_ms": 0.514,
+          "share_percent": 0.0
+        },
+        {
+          "name": "argmax_kernel_inner",
+          "calls": 8,
+          "time_ms": 0.4,
+          "share_percent": 0.0
+        },
+        {
+          "name": "triton_red_fused__to_copy_embedding_rms_norm_0",
+          "calls": 8,
+          "time_ms": 0.303,
+          "share_percent": 0.0
+        },
+        {
+          "name": "zeros_kernel",
+          "calls": 72,
+          "time_ms": 0.251,
+          "share_percent": 0.0
+        }
+      ]
+    },
+    "from_first_graph_launch": {
+      "kernel_calls": 776,
+      "gpu_kernel_time_ms": 28.488,
+      "top_kernels": [
+        {
+          "name": "linear_kernel",
+          "calls": 15,
+          "time_ms": 12.295,
+          "share_percent": 43.16
+        },
+        {
+          "name": "sweep",
+          "calls": 120,
+          "time_ms": 7.25,
+          "share_percent": 25.45
+        },
+        {
+          "name": "compute_global_hist_kernel",
+          "calls": 15,
+          "time_ms": 4.263,
+          "share_percent": 14.96
+        },
+        {
+          "name": "softmax_kernel_inner",
+          "calls": 30,
+          "time_ms": 0.963,
+          "share_percent": 3.38
+        },
+        {
+          "name": "argmax_kernel_inner",
+          "calls": 15,
+          "time_ms": 0.75,
+          "share_percent": 2.63
+        },
+        {
+          "name": "zeros_kernel",
+          "calls": 135,
+          "time_ms": 0.466,
+          "share_percent": 1.63
+        },
+        {
+          "name": "_to_copy_func_kernel_rank_1",
+          "calls": 59,
+          "time_ms": 0.256,
+          "share_percent": 0.9
+        },
+        {
+          "name": "le_func_kernel_rank_2",
+          "calls": 15,
+          "time_ms": 0.172,
+          "share_percent": 0.61
+        },
+        {
+          "name": "true_div_func_kernel_rank_2",
+          "calls": 15,
+          "time_ms": 0.171,
+          "share_percent": 0.6
+        },
+        {
+          "name": "_scatter_jit_function",
+          "calls": 15,
+          "time_ms": 0.169,
+          "share_percent": 0.59
+        },
+        {
+          "name": "reduce_then_scan_block_scan_kernel_row",
+          "calls": 15,
+          "time_ms": 0.164,
+          "share_percent": 0.58
+        },
+        {
+          "name": "_copy_kernel_kernel_rank_2",
+          "calls": 15,
+          "time_ms": 0.159,
+          "share_percent": 0.56
+        },
+        {
+          "name": "_copy_kernel_kernel_rank_1",
+          "calls": 45,
+          "time_ms": 0.159,
+          "share_percent": 0.56
+        },
+        {
+          "name": "fill_scalar_func_kernel_rank_1",
+          "calls": 44,
+          "time_ms": 0.15,
+          "share_percent": 0.53
+        },
+        {
+          "name": "_index_linearized_jit_function",
+          "calls": 29,
+          "time_ms": 0.121,
+          "share_percent": 0.42
+        }
+      ]
+    }
+  }
+}

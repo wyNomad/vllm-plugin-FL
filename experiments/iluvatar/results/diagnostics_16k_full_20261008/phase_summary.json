@@ -1,0 +1,24 @@
+[
+  {
+    "case": "full_16k",
+    "concurrency": 64,
+    "requests": 128,
+    "output_tokens": 1024,
+    "seed": 201,
+    "exit_code": 0,
+    "duration_s": 2682.39,
+    "preemptions": 4.0,
+    "prompt_tokens": 2097152.0,
+    "cached_tokens": 0.0,
+    "ttft_count": 128.0,
+    "ttft_mean_s": 644.472920788452,
+    "queue_count": 128.0,
+    "queue_mean_s": 616.3854114792539,
+    "prefill_count": 128.0,
+    "prefill_mean_s": 19.65264767098597,
+    "decode_count": 128.0,
+    "decode_mean_s": 535.1931108149784,
+    "inference_count": 128.0,
+    "inference_mean_s": 554.8457584859643
+  }
+]

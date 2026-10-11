@@ -1,0 +1,7 @@
+2026-10-11 21:59:06 CST，远程只读核验：
+matched_baseline_formal.exit = 0
+个人容器 docker ps -a 查询无输出，已删除。
+container_stop.log 原件内容：docker stop timed out
+监督脚本在等待清理完成后最终退出码为 0。
+退出码/监督日志额外下载超时，此文件记录已成功的远程查询；原始日志和 CSV 已完整下载。
+服务参数对比通过，差异为候选的 Native 2D 环境开关。

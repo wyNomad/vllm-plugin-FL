@@ -1,0 +1,53 @@
+[
+  {
+    "variant": "force_triton_tritonk",
+    "case": "warmup",
+    "input_tokens": 4096,
+    "output_tokens": 32,
+    "concurrency": 1,
+    "seed": 701,
+    "exit_code": 0,
+    "successful_requests": 1.0,
+    "failed_requests": 0.0,
+    "total_tokens_per_s": 480.57,
+    "output_tokens_per_s": 3.73,
+    "mean_ttft_ms": 8171.51,
+    "mean_tpot_ms": 13.48,
+    "cached_tokens_delta": 0.0,
+    "preemptions_delta": 0.0
+  },
+  {
+    "variant": "force_triton_tritonk",
+    "case": "decode_4k",
+    "input_tokens": 4096,
+    "output_tokens": 256,
+    "concurrency": 64,
+    "seed": 702,
+    "exit_code": 0,
+    "successful_requests": 64.0,
+    "failed_requests": 0.0,
+    "total_tokens_per_s": 1523.04,
+    "output_tokens_per_s": 89.59,
+    "mean_ttft_ms": 43167.85,
+    "mean_tpot_ms": 439.6,
+    "cached_tokens_delta": 0.0,
+    "preemptions_delta": 0.0
+  },
+  {
+    "variant": "force_triton_tritonk",
+    "case": "long_16k",
+    "input_tokens": 16384,
+    "output_tokens": 128,
+    "concurrency": 32,
+    "seed": 703,
+    "exit_code": 0,
+    "successful_requests": 32.0,
+    "failed_requests": 0.0,
+    "total_tokens_per_s": 992.01,
+    "output_tokens_per_s": 7.69,
+    "mean_ttft_ms": 250470.56,
+    "mean_tpot_ms": 1559.19,
+    "cached_tokens_delta": 0.0,
+    "preemptions_delta": 0.0
+  }
+]
