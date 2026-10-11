@@ -1,0 +1,22 @@
+{
+  "branch": "perf/iluvatar-native2d-experiments",
+  "head": "c1fb81df6d48da4c0da053fb63bbae52af87e376",
+  "tree": "62c6366f1404826bbf23bef03143482208322c44",
+  "clean": true,
+  "archived_server_head": "11e8aecdd4d4490288555cbccf1fbcd45b460c18",
+  "protected_file_count": 437,
+  "protected_files_unchanged": true,
+  "runtime_scripts_sha256": {
+    "results/native2d_20261011/analyze_formal.py": "0741a5e9c3e190a5faed9bd134ced98117180e2dc952fa4cfa0c8e7e26587633",
+    "results/native2d_20261011/bench_service_ab.py": "fc27b1b2abd507688b2183965a1ead5077af52d878ad4b29659b26f4f3a24409",
+    "results/native2d_20261011/patch_vllm.py": "87af8551de2fff5916ab8b74476c5aea757ffca1ce5268dabb8193269e40265b",
+    "results/native2d_20261011/patch_vllm_long_context.py": "690dcb12baabd849a829d84ce2ac0cd066252349995cd55e7bfcd1e3ee5a9fa4",
+    "results/native2d_20261011/run_after_baseline.py": "658e0c7a3cdc20a432dfe97c5bc291a751af8cee402e4c8f0943b6ad4a52dd32",
+    "results/native2d_20261011/run_baseline_short.py": "f59aec2595f543e13a74567cd36249d4fe9deb9a3ce46348dc8fe5d52a3e87a0",
+    "results/native2d_20261011/run_matched_baseline_formal.py": "6aaf3586ec003ed7761d6f8ba82e52ced45b82fa7ea499adc0e566b42b141d9a",
+    "results/native2d_20261011/run_probe.py": "13b8ea24f64d22aab2ba80d214c82f1462fcaeb6fe293dbedf5ba5d6607cb816",
+    "results/native2d_20261011/run_validation.py": "99849d7b6589610cd81a49de0e2814febcb31255c189edc23efb98253f797444"
+  },
+  "backup_path": "/workspace/wyNomad/backups/code-sync-20261011-c1fb81d",
+  "note": "首次同步检查点；后续文档提交继续按同一分支快进同步。完整备份不上传 GitHub。"
+}
