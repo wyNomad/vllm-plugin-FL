@@ -1,0 +1,28 @@
+{
+  "started_at": "2026-10-11T15:31:28.832316+00:00",
+  "plugin_commit": "574c1f6973ac55b054c66cc3aeb41e7fcaa8c36f",
+  "gpu": 1,
+  "order": [
+    "baseline",
+    "candidate"
+  ],
+  "cases": [
+    [
+      4096,
+      1024,
+      64,
+      256
+    ],
+    [
+      16384,
+      1024,
+      64,
+      128
+    ]
+  ],
+  "runs_per_case": 4,
+  "discard_first": 1,
+  "new_candidate": false,
+  "runner_sha256": "a21daf7b49bba899241ea0b0e35dc9ffd5a106b5d8466a212a58ff2945a3c832",
+  "expected_image_digest": "sha256:cc8ed9969977a06996c86c483851567f212ab9761bb9147e85082b4a34ce88b8"
+}

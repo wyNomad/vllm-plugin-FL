@@ -1,0 +1,19 @@
+{
+  "verified_date": "2026-10-12",
+  "overall_exit": 0,
+  "server_checksums_passed": true,
+  "local_checksums_passed": true,
+  "local_csv_recalculation_passed": true,
+  "report_recalculation_matches": true,
+  "successful_requests_each_variant": 1536,
+  "expected_requests_each_variant": 1536,
+  "input_output_token_counts_complete": true,
+  "candidate_patched_source_matches_first_run": true,
+  "personal_container_absent": true,
+  "baseline_cleanup_exit": 0,
+  "candidate_cleanup_exit": 0,
+  "execution_commit": "574c1f6973ac55b054c66cc3aeb41e7fcaa8c36f",
+  "completed_at_utc": "2026-10-11T22:24:50.019394+00:00",
+  "completed_at_china": "2026-10-12 06:24:50",
+  "accuracy_rerun": false
+}

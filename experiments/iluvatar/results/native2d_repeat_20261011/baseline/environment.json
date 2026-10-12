@@ -1,0 +1,34 @@
+{
+  "started_at": "2026-10-11T15:31:30.326467+00:00",
+  "plugin_commit": "574c1f6973ac55b054c66cc3aeb41e7fcaa8c36f",
+  "plugin_tree": "c53688baff69651adf4bce649853a97a16d74966",
+  "flaggems_commit": "a7620cc191a0b42e040194622c5758b22a7a25dc",
+  "flaggems_status": "",
+  "image_id": "sha256:f0a3e064baf7ff721e5da81aafa68c471e1f17225556d651862e6e30cadaac96",
+  "repo_digests": [
+    "harbor.baai.ac.cn/plugin/iluvatar-corex4.5.0-flagtree0.6.0-triton3.6.0-cxnone-vllm_fl0.24.0@sha256:cc8ed9969977a06996c86c483851567f212ab9761bb9147e85082b4a34ce88b8"
+  ],
+  "container_id": "9164becc5e5322b23bc317366bee3ef3ae3963a6fcc3c68303a2c86b4d0e6730",
+  "gpu": 1,
+  "cases": [
+    [
+      4096,
+      1024,
+      64,
+      256
+    ],
+    [
+      16384,
+      1024,
+      64,
+      128
+    ]
+  ],
+  "compilation": {
+    "cudagraph_mode": "FULL_DECODE_ONLY",
+    "cudagraph_num_of_warmups": 0
+  },
+  "patch_sha256": "87af8551de2fff5916ab8b74476c5aea757ffca1ce5268dabb8193269e40265b",
+  "benchmark_sha256": "0813eba574e9d1eb50c297c515baa426da1bcb61ce8c78a398b482f246005565",
+  "launcher_sha256": "52883e69eabee1c81c53572f5773bdd367a95ee9c9ddbf081ec29597160f3794"
+}

@@ -1,0 +1,67 @@
+--- triton_unified_attention.py.original
++++ triton_unified_attention.py.probe
+@@ -7,6 +7,7 @@
+ #  - Chih-Chieh Yang <chih.chieh.yang@ibm.com>
+ #  - Thomas Parnell <tpa@zurich.ibm.com>
+ 
++import os
+ from typing import Any
+ 
+ import torch
+@@ -33,6 +34,7 @@
+ logger = init_logger(__name__)
+ is_batch_invariant = envs.VLLM_BATCH_INVARIANT
+ float8_info = torch.finfo(current_platform.fp8_dtype())
++_native2d_probe_hits = 0
+ 
+ 
+ @triton.jit
+@@ -882,6 +884,21 @@
+         launch_num_warps = 8
+         launch_num_stages = 2
+ 
++    # BI-V150/MiniCPM5-2B probe. Keep small decode batches on native 3D.
++    native2d_probe = (
++        os.environ.get("VLLM_FL_NATIVE2D_PROBE") == "1"
++        and kv_quant_mode == KVQuantMode.NONE
++        and head_size == 128
++        and num_queries_per_kv == 8
++        and not use_td
++        and (max_seqlen_q > 1 or num_seqs >= 16)
++    )
++    if native2d_probe:
++        BLOCK_M = 128
++        BLOCK_Q = BLOCK_M // num_queries_per_kv
++        launch_num_warps = 8
++        launch_num_stages = 2
++
+     # Ideally we would launch with kernel with:
+     # \sum_i[ceil(query_len[i] / BLOCK_Q)] blocks.
+     # However, it is slow to realize the query_lens on cpu.
+@@ -914,6 +931,9 @@
+     # path (used when max_seqlen_q > 1) reads TILE_SIZE_PREFILL.
+     if tuned_large_head:
+         TILE_SIZE_PREFILL = 128
++    if native2d_probe:
++        TILE_SIZE_PREFILL = 16
++        TILE_SIZE_DECODE = 16
+ 
+     # USE_TD requires BLOCK_SIZE % TILE_SIZE == 0 (enforced by a
+     # ``tl.static_assert`` in the kernel).  The default prefill tile
+@@ -976,6 +996,16 @@
+         or num_seqs > seq_threshold_3D
+         or is_batch_invariant
+     )
++    if native2d_probe:
++        use_3d = False
++        global _native2d_probe_hits
++        _native2d_probe_hits += 1
++        if _native2d_probe_hits in (1, 10, 100, 1000):
++            logger.info(
++                "NATIVE2D_PROBE hit=%s seqs=%s max_q=%s block_m=%s tile=%s",
++                _native2d_probe_hits, num_seqs, max_seqlen_q,
++                BLOCK_M, TILE_SIZE_PREFILL,
++            )
+ 
+     # The kernel signature is the same for 2D and 3D — only the launch
+     # grid + a handful of constexpr toggles differ.  Per-token-head scale
