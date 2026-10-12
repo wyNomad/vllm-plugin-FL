@@ -47,14 +47,15 @@ def capture(policy, arguments):
     return graph, output
 
 
-def dense(arguments, output):
+def dense(arguments, output, assert_accuracy=True):
     length = int(arguments['seqused_k'][0].item())
     blocks = arguments['block_table'][0]
     key = arguments['k'][blocks].reshape(-1, 2, 128)[:length].repeat_interleave(8, 1).transpose(0, 1).float()
     value = arguments['v'][blocks].reshape(-1, 2, 128)[:length].repeat_interleave(8, 1).transpose(0, 1).float()
     query = arguments['q'][:1].transpose(0, 1).float()
     reference = ((query @ key.transpose(1, 2) * 128 ** -.5).softmax(-1) @ value).transpose(0, 1)
-    torch.testing.assert_close(output[:1].float(), reference, atol=2e-3, rtol=2e-2)
+    if assert_accuracy:
+        torch.testing.assert_close(output[:1].float(), reference, atol=2e-3, rtol=2e-2)
     return (output[:1].float() - reference).abs().max().item()
 
 
@@ -90,9 +91,21 @@ def check(sequences, dtype):
         assert torch.isfinite(actual).all(), 'routing skipped a live output'
         torch.testing.assert_close(actual, expected, atol=2e-3, rtol=2e-2)
         torch.testing.assert_close(graphs['prefill'][1], graphs['baseline'][1], atol=2e-3, rtol=2e-2)
+        # The unmodified upstream 2D kernel has a dummy length=1 discrepancy
+        # above its 3D batch threshold. Check it against an eager upstream call
+        # separately; all real 4k/16k/boundary/mixed contexts must pass dense.
+        capture_dummy = sequences > 64 and length == 1
         row = dict(sequences=sequences, dtype=str(dtype), context=length,
                    replay_max_abs_error=(actual - expected).abs().max().item(),
-                   dense_max_abs_error=dense(arguments, actual))
+                   dense_max_abs_error=dense(arguments, actual, not capture_dummy),
+                   dense_checked=not capture_dummy)
+        if capture_dummy:
+            eager = torch.empty_like(actual)
+            baseline(out=eager, **arguments)
+            torch.cuda.synchronize()
+            torch.testing.assert_close(actual, eager, atol=2e-3, rtol=2e-2)
+            row['upstream_eager_dense_max_abs_error'] = dense(arguments, eager, False)
+            row['note'] = 'capture-only dummy length; upstream eager reproduces discrepancy'
         if length in (4096, 16384):
             row['graph_latency_us'] = {policy: latency(pair[0]) for policy, pair in graphs.items()}
         rows.append(row)

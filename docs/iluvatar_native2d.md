@@ -66,3 +66,25 @@ or preemptions, and container cleanup. The plugin differed from the legacy
 patch by -0.53% on the short 4k case and +0.04% on short 16k. See the archived
 migration report. Full Math500 and official four-round acceptance were not
 repeated; the known formal 4k regression is not fixed by this migration.
+
+## 4k recovery probes (2026-10-12)
+
+`VLLM_FL_ILUVATAR_NATIVE2D_POLICY=native` preserves the first version (default).
+`prefill` applies its geometry to prefill/mixed batches only and keeps native
+2D/3D decode heuristics. `context` captures both decode paths, with plugin-owned
+kernels routing each live sequence on the GPU: below 8192 uses native geometry,
+at/above 8192 uses the first-version 2D geometry. Capturing a Python condition
+on `max_seqlen_k` would freeze the choice during graph replay, so it is avoided.
+There is no CPU readback of GPU lengths. Prefill and unsupported shapes retain
+the existing behavior. Two-path launch overhead is part of the experiment.
+
+The context kernels are adapted from the pinned engine, preserving the full
+kernel AST except explicit early-return guards and their constexpr arguments.
+`experiments/iluvatar/native2d_context/check_numerics.py` checks one captured
+graph across 4096, 8191, 8192, 16384 and mixed lengths, against native/first-version
+outputs and dense attention; it also times all three policies and the baseline.
+Dummy capture length 1 above the original 64-sequence 3D threshold is separately
+reported because an upstream eager call reproduces a dense-reference discrepancy.
+It is not counted as a dense numerical pass. Real workload lengths must pass.
+The representative screen uses 4k input / 1024 output / 64 requests and a short
+16k preservation case. Its results are not the official four-round score.
