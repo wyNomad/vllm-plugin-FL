@@ -198,4 +198,3 @@ class Native2DAttentionImpl(upstream_backend.TritonAttentionImpl):
         )
 
         return output
-

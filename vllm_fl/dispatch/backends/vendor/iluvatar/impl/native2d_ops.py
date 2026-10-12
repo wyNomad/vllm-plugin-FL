@@ -390,4 +390,3 @@ def unified_attention(
             NUM_SEGMENTS_PER_SEQ=num_par_softmax_segments,
             USE_FP8=output_scale is not None,
         )
-
