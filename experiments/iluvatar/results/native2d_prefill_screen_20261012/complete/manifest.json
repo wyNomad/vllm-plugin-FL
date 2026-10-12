@@ -1,0 +1,12 @@
+{
+  "commit": "197610d877f3bd50231239fef4dd6d1760638c01",
+  "gpu": 3,
+  "policies": [
+    "baseline",
+    "prefill"
+  ],
+  "started_at": "2026-10-12T05:23:53.698840+00:00",
+  "service_compilation": {
+    "cudagraph_mode": "FULL_DECODE_ONLY"
+  }
+}

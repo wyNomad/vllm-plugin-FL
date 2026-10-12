@@ -99,9 +99,38 @@ upstream eager execution reproduced them. BF16, 64-sequence pure decode:
 baseline/native-first/prefill-only latency was 1600.48/2543.48/1600.94 us at 4k
 and 5906.94/10053.27/5905.99 us at 16k. Native 3D was faster at both contexts,
 so prefill-only is the current service candidate. These are kernel timings,
-not end-to-end or official gains. A same-GPU3 screen is running.
+not end-to-end or official gains. The same-GPU3 screen and official acceptance are now complete; see the final results below.
 
 `run_acceptance.py` gates on a completed screen, then runs candidate Math500
 and baseline/candidate official four-round throughput in new containers. It
 checks all request/token counts, recomputes the three counted rounds and
 requires both 4k/16k throughput and TTFT to meet the competition 1% gates.
+
+
+## Completed prefill-only official acceptance (2026-10-12)
+
+Execution commit 7b37daf, same physical GPU3, pinned image and identical official
+service settings. Each scenario ran four rounds per variant; the first was
+discarded. Total token throughput (input plus output):
+
+| Input/output | Native baseline tok/s | Prefill-only tok/s | Change | Mean TTFT change | Mean TPOT change |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 4096/1024 | 1980.92 | 2354.83 | +18.88% | -47.42% | -13.36% |
+| 16384/1024 | 917.63 | 1891.09 | +106.08% | -55.30% | -49.94% |
+
+Math500 Level3: 0.9714, 105/105 succeeded. Both performance gates passed; each
+variant completed 1536/1536 benchmark requests with exact token totals. All
+5426 installed vLLM Python sources remained unchanged in all three stages;
+containers were removed. Use explicit plugin enablement and policy `prefill`;
+default policy `native` still preserves the first-version behavior.
+
+The counted 4k candidate rounds were 2503.87, 2452.06 and 2108.57 tok/s (sample
+CV 9.12%, baseline 2.09%). The 16k candidate CV was 0.0197%. These describe
+within-run variation; independent repetition of the prefill-only candidate
+has not been completed. Do not claim cross-run stability or unchanged
+per-question accuracy from these data. The original context-threshold probe
+remains experimental and is not the accepted service candidate.
+
+[Final report](../experiments/iluvatar/results/native2d_prefill_acceptance_20261012/REPORT.md)
+contains the evidence layout and limits. No additional experiment was started
+while archiving these results.

@@ -1,0 +1,22 @@
+{
+  "commit": "7b37dafda546c6e54e695a3db712e4e3a89e6ca8",
+  "gpu": 3,
+  "started_at": "2026-10-12T05:58:19.918049+00:00",
+  "cases": [
+    [
+      4096,
+      1024,
+      64,
+      256
+    ],
+    [
+      16384,
+      1024,
+      64,
+      128
+    ]
+  ],
+  "rounds": 4,
+  "discard_first": true,
+  "screened_from": "native2d_prefill_screen_20261012"
+}

@@ -1,0 +1,6 @@
+{
+  "expected_screen_commit": "197610d877f3bd50231239fef4dd6d1760638c01",
+  "next_commit": "7b37dafda546c6e54e695a3db712e4e3a89e6ca8",
+  "gpu": 3,
+  "formal_requires_screen_gates": true
+}

@@ -1,0 +1,8 @@
+{
+  "commit": "7b37dafda546c6e54e695a3db712e4e3a89e6ca8",
+  "gpu": 3,
+  "container_id": "8cadd8c3fdfcfac48173df2170589a2c6cae9fdacfd07cdc3179b13a013ea48c",
+  "image_id": "sha256:f0a3e064baf7ff721e5da81aafa68c471e1f17225556d651862e6e30cadaac96",
+  "policy": "prefill",
+  "started_at": "2026-10-12T05:58:20.997559+00:00"
+}

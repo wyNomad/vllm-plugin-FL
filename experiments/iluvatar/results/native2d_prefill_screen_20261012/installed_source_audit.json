@@ -1,0 +1,16 @@
+{
+  "stages": {
+    "baseline": {
+      "installed_python_file_count": 5426,
+      "changed": [],
+      "full_audit_source": "results/native2d_prefill_screen_20261012/complete/baseline/source_audit.json",
+      "full_audit_sha256": "7896c43b31ee186865c80ff633c9d5fe11a0bc0ff94fecf2cc03c4a02ab136ca"
+    },
+    "prefill": {
+      "installed_python_file_count": 5426,
+      "changed": [],
+      "full_audit_source": "results/native2d_prefill_screen_20261012/complete/prefill/source_audit.json",
+      "full_audit_sha256": "7896c43b31ee186865c80ff633c9d5fe11a0bc0ff94fecf2cc03c4a02ab136ca"
+    }
+  }
+}

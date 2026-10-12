@@ -1,0 +1,20 @@
+[
+  {
+    "input_len": 4096,
+    "output_len": 1024,
+    "concurrency": 64,
+    "count": 256,
+    "throughput": 1980.9233333333334,
+    "ttft_ms": 11623.210000000001,
+    "tpot_ms": 148.57666666666668
+  },
+  {
+    "input_len": 16384,
+    "output_len": 1024,
+    "concurrency": 64,
+    "count": 128,
+    "throughput": 917.63,
+    "ttft_ms": 598269.77,
+    "tpot_ms": 486.25333333333333
+  }
+]

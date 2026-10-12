@@ -1,0 +1,22 @@
+{
+  "stages": {
+    "accuracy": {
+      "installed_python_file_count": 5426,
+      "changed": [],
+      "full_audit_source": "results/native2d_prefill_acceptance_20261012/complete/accuracy/source_audit.json",
+      "full_audit_sha256": "7896c43b31ee186865c80ff633c9d5fe11a0bc0ff94fecf2cc03c4a02ab136ca"
+    },
+    "baseline_formal": {
+      "installed_python_file_count": 5426,
+      "changed": [],
+      "full_audit_source": "results/native2d_prefill_acceptance_20261012/complete/baseline_formal/source_audit.json",
+      "full_audit_sha256": "7896c43b31ee186865c80ff633c9d5fe11a0bc0ff94fecf2cc03c4a02ab136ca"
+    },
+    "prefill_formal": {
+      "installed_python_file_count": 5426,
+      "changed": [],
+      "full_audit_source": "results/native2d_prefill_acceptance_20261012/complete/prefill_formal/source_audit.json",
+      "full_audit_sha256": "7896c43b31ee186865c80ff633c9d5fe11a0bc0ff94fecf2cc03c4a02ab136ca"
+    }
+  }
+}

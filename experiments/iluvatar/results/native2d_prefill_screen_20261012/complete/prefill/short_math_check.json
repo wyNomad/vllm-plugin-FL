@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "usage": {
+    "prompt_tokens": 58,
+    "total_tokens": 186,
+    "completion_tokens": 128,
+    "prompt_tokens_details": null
+  }
+}
