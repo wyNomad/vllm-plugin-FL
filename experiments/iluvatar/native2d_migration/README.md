@@ -9,3 +9,7 @@ run_validation.py在个人GPU1新容器里串行验证插件版和旧补丁版�
 两阶段记录完整环境、原始日志、请求结果和vLLM所有.py源文件哈希。插件版要求源文件全部保持不变，服务日志必须证实插件backend和Native2D路径被调用。旧补丁控制容器只允许修改历史两份目标文件，结束后销毁；不触碰他人目录或容器。
 
 服务器后台监督命令：python3 experiments/iluvatar/native2d_migration/run_validation.py --run-id native2d_plugin_20261012。必须通过脱离SSH的启动器运行，默认拒绝复用结果目录。完成看/workspace/wyNomad/results/native2d_plugin_20261012/run.exit、REPORT.md；完整日志归档个人目录。短版A/B不是比赛计分，后续仍须Math500与原版正式四轮验收。
+
+## 10/12 验收结果
+
+迁移验证已完成，执行e86fd22、退出码0。11组GPU数值逐位等价，短/长确定性答案逐字一致，插件安装的5426份vLLM.py源码均未改。旧补丁/插件短版4k为1923.70/1913.51 tok/s（-0.53%），16k为2596.10/2597.26（+0.04%）。两侧各97请求成功、token完整，容器均清理。精简报告在../results/native2d_plugin_20261012/，正式Math500和四轮计分仍待后续。

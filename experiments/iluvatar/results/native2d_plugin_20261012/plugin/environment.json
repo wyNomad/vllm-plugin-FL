@@ -1,0 +1,13 @@
+{
+  "plugin_commit": "e86fd22fb77c0c0220f54b0ea7b565259393a5ea",
+  "container_id": "afb65192e17ca73882f6bae3f23affcc1edab6ec7e16eb7992f11ba6ef4f7b76",
+  "image_id": "sha256:f0a3e064baf7ff721e5da81aafa68c471e1f17225556d651862e6e30cadaac96",
+  "repo_digests": [
+    "harbor.baai.ac.cn/plugin/iluvatar-corex4.5.0-flagtree0.6.0-triton3.6.0-cxnone-vllm_fl0.24.0@sha256:cc8ed9969977a06996c86c483851567f212ab9761bb9147e85082b4a34ce88b8"
+  ],
+  "gpu": 1,
+  "compilation": {
+    "cudagraph_mode": "FULL_DECODE_ONLY"
+  },
+  "started_at": "2026-10-12T04:00:57.585246+00:00"
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "dtype": "torch.float16",
+    "sequences": 1,
+    "query_len": 16,
+    "context_len": 128,
+    "head_size": 128,
+    "gqa": 8,
+    "legacy_bitwise_equal": true,
+    "dense_max_abs_error": 1.541152596473694e-05
+  },
+  {
+    "dtype": "torch.float16",
+    "sequences": 8,
+    "query_len": 1,
+    "context_len": 256,
+    "head_size": 128,
+    "gqa": 8,
+    "legacy_bitwise_equal": true,
+    "dense_max_abs_error": 8.841976523399353e-06
+  },
+  {
+    "dtype": "torch.float16",
+    "sequences": 16,
+    "query_len": 1,
+    "context_len": 4096,
+    "head_size": 128,
+    "gqa": 8,
+    "legacy_bitwise_equal": true,
+    "dense_max_abs_error": 2.013053745031357e-06
+  },
+  {
+    "dtype": "torch.float16",
+    "sequences": 32,
+    "query_len": 1,
+    "context_len": 16384,
+    "head_size": 128,
+    "gqa": 8,
+    "legacy_bitwise_equal": true,
+    "dense_max_abs_error": 1.028645783662796e-06
+  },
+  {
+    "dtype": "torch.float16",
+    "sequences": 64,
+    "query_len": 1,
+    "context_len": 16384,
+    "head_size": 128,
+    "gqa": 8,
+    "legacy_bitwise_equal": true,
+    "dense_max_abs_error": 1.1497177183628082e-06
+  },
+  {
+    "dtype": "torch.bfloat16",
+    "sequences": 1,
+    "query_len": 16,
+    "context_len": 128,
+    "head_size": 128,
+    "gqa": 8,
+    "legacy_bitwise_equal": true,
+    "dense_max_abs_error": 0.00012997910380363464
+  },
+  {
+    "dtype": "torch.bfloat16",
+    "sequences": 8,
+    "query_len": 1,
+    "context_len": 256,
+    "head_size": 128,
+    "gqa": 8,
+    "legacy_bitwise_equal": true,
+    "dense_max_abs_error": 7.504038512706757e-05
+  },
+  {
+    "dtype": "torch.bfloat16",
+    "sequences": 16,
+    "query_len": 1,
+    "context_len": 4096,
+    "head_size": 128,
+    "gqa": 8,
+    "legacy_bitwise_equal": true,
+    "dense_max_abs_error": 1.3852491974830627e-05
+  },
+  {
+    "dtype": "torch.bfloat16",
+    "sequences": 32,
+    "query_len": 1,
+    "context_len": 16384,
+    "head_size": 128,
+    "gqa": 8,
+    "legacy_bitwise_equal": true,
+    "dense_max_abs_error": 7.696682587265968e-06
+  },
+  {
+    "dtype": "torch.bfloat16",
+    "sequences": 64,
+    "query_len": 1,
+    "context_len": 16384,
+    "head_size": 128,
+    "gqa": 8,
+    "legacy_bitwise_equal": true,
+    "dense_max_abs_error": 7.660826668143272e-06
+  },
+  {
+    "dtype": "torch.bfloat16",
+    "sequences": 8,
+    "query_len": 1,
+    "context_len": 256,
+    "head_size": 64,
+    "gqa": 4,
+    "legacy_bitwise_equal": true,
+    "dense_max_abs_error": 3.8875266909599304e-05
+  }
+]

@@ -1,0 +1,9 @@
+[
+  "docker",
+  "exec",
+  "wynomad-minicpm-s2-gpu1",
+  "python3",
+  "/workspace/vllm-plugin-FL/experiments/iluvatar/native2d_migration/service_checks.py",
+  "/workspace/benchmark_results/native2d_plugin_20261012",
+  "plugin"
+]

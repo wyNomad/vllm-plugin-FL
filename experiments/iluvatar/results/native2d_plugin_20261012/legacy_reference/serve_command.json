@@ -1,0 +1,20 @@
+[
+  "docker",
+  "exec",
+  "-e",
+  "VLLM_FL_NATIVE2D_PROBE=1",
+  "wynomad-minicpm-s2-gpu1",
+  "vllm",
+  "serve",
+  "/workspace/MiniCPM5-2B",
+  "--port",
+  "9031",
+  "--served-model-name",
+  "minicpm",
+  "--gpu-memory-utilization",
+  "0.85",
+  "--max-model-len",
+  "131072",
+  "--compilation-config",
+  "{\"cudagraph_mode\":\"FULL_DECODE_ONLY\"}"
+]

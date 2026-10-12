@@ -1652,6 +1652,258 @@
       "source_sha256": "7a3134deaaeb2538e4407d477b69434c3037ccb212fb5a65bca0a1f02f98a1db",
       "archive_sha256": "7a3134deaaeb2538e4407d477b69434c3037ccb212fb5a65bca0a1f02f98a1db",
       "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/REPORT.md",
+      "archive": "results/native2d_plugin_20261012/REPORT.md",
+      "source_sha256": "3f32d7e8708291c51125dd8ca1e300b1f5a00baedf26c3b48791031c784b83a6",
+      "archive_sha256": "3f32d7e8708291c51125dd8ca1e300b1f5a00baedf26c3b48791031c784b83a6",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/comparison.json",
+      "archive": "results/native2d_plugin_20261012/comparison.json",
+      "source_sha256": "ad7329b05a675812d1e5fb098a0c613c1e2cbe09af143fdc77e5190a0b4cc323",
+      "archive_sha256": "ad7329b05a675812d1e5fb098a0c613c1e2cbe09af143fdc77e5190a0b4cc323",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/current_stage.txt",
+      "archive": "results/native2d_plugin_20261012/current_stage.txt",
+      "source_sha256": "c218600b5166d22f64db8fede07952fdea854f17de8fee8db78ceb852ef07f04",
+      "archive_sha256": "c218600b5166d22f64db8fede07952fdea854f17de8fee8db78ceb852ef07f04",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/legacy_reference/benchmark_command.json",
+      "archive": "results/native2d_plugin_20261012/legacy_reference/benchmark_command.json",
+      "source_sha256": "2b6e88d4f718a27e6e2bc4118eef6f8479c95770e10bc14d66ac68ca09ee685d",
+      "archive_sha256": "2b6e88d4f718a27e6e2bc4118eef6f8479c95770e10bc14d66ac68ca09ee685d",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/legacy_reference/benchmark_succeeded.ok",
+      "archive": "results/native2d_plugin_20261012/legacy_reference/benchmark_succeeded.ok",
+      "source_sha256": "b6397de5ee538384c001c7103b6757a070590f0ef41f18a6ad7e4a0a09d3b31f",
+      "archive_sha256": "b6397de5ee538384c001c7103b6757a070590f0ef41f18a6ad7e4a0a09d3b31f",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/legacy_reference/environment.json",
+      "archive": "results/native2d_plugin_20261012/legacy_reference/environment.json",
+      "source_sha256": "5651e7571c5e7b4d9e511345dff0d9b07ee962eabac4896cf4cd110b654be91a",
+      "archive_sha256": "5651e7571c5e7b4d9e511345dff0d9b07ee962eabac4896cf4cd110b654be91a",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/legacy_reference/long_16k_math_check.json",
+      "archive": "results/native2d_plugin_20261012/legacy_reference/long_16k_math_check.json",
+      "source_sha256": "098f412d6fd72f2ed41e72c25cea22191e4c485be14013aca7823c04704a550e",
+      "archive_sha256": "098f412d6fd72f2ed41e72c25cea22191e4c485be14013aca7823c04704a550e",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/legacy_reference/serve_command.json",
+      "archive": "results/native2d_plugin_20261012/legacy_reference/serve_command.json",
+      "source_sha256": "12520c8563159fe31ba2a19b8f0da9869be2cd6aec2f0db25a3594650b934d3a",
+      "archive_sha256": "12520c8563159fe31ba2a19b8f0da9869be2cd6aec2f0db25a3594650b934d3a",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/legacy_reference/short_math_check.json",
+      "archive": "results/native2d_plugin_20261012/legacy_reference/short_math_check.json",
+      "source_sha256": "e6b4925176899349cd101d8611fc41e85af9f33462432f9e44607354b6134324",
+      "archive_sha256": "e6b4925176899349cd101d8611fc41e85af9f33462432f9e44607354b6134324",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/legacy_reference/source_patch/manifest.json",
+      "archive": "results/native2d_plugin_20261012/legacy_reference/source_patch/manifest.json",
+      "source_sha256": "9822d7734c25cd958231266f630f3409a2f8b7300849af3360db27d6a8156218",
+      "archive_sha256": "9822d7734c25cd958231266f630f3409a2f8b7300849af3360db27d6a8156218",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/legacy_reference/source_patch/triton_attn.py.diff",
+      "archive": "results/native2d_plugin_20261012/legacy_reference/source_patch/triton_attn.py.diff",
+      "source_sha256": "52d92b18fdd225dc7c61b718439a3d2852fda73d5d10bbb96f1eb1e1cae0dd74",
+      "archive_sha256": "52d92b18fdd225dc7c61b718439a3d2852fda73d5d10bbb96f1eb1e1cae0dd74",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/legacy_reference/source_patch/triton_unified_attention.py.diff",
+      "archive": "results/native2d_plugin_20261012/legacy_reference/source_patch/triton_unified_attention.py.diff",
+      "source_sha256": "5241e5d71ed10dda08f8bff9a0da3b14a2725481304e7dcdac70fa8cb0c63c9a",
+      "archive_sha256": "5241e5d71ed10dda08f8bff9a0da3b14a2725481304e7dcdac70fa8cb0c63c9a",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/legacy_reference/stage_succeeded.ok",
+      "archive": "results/native2d_plugin_20261012/legacy_reference/stage_succeeded.ok",
+      "source_sha256": "26cc1deead0db24c71294262e7e105984aa5efa4e4f4dcda50ead6f119db2e18",
+      "archive_sha256": "26cc1deead0db24c71294262e7e105984aa5efa4e4f4dcda50ead6f119db2e18",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/legacy_reference/summary.json",
+      "archive": "results/native2d_plugin_20261012/legacy_reference/summary.json",
+      "source_sha256": "621354b9ebef2568f16121c9ba00ba602dd8b080cbbec5f05c8e1066a7f6d19c",
+      "archive_sha256": "621354b9ebef2568f16121c9ba00ba602dd8b080cbbec5f05c8e1066a7f6d19c",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/legacy_reference/vllm_source_changes.json",
+      "archive": "results/native2d_plugin_20261012/legacy_reference/vllm_source_changes.json",
+      "source_sha256": "f22044094e89b8ad1258a264b54219bcdf6b79caf4c0a35006631a7713c0fb38",
+      "archive_sha256": "f22044094e89b8ad1258a264b54219bcdf6b79caf4c0a35006631a7713c0fb38",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/plugin/benchmark_command.json",
+      "archive": "results/native2d_plugin_20261012/plugin/benchmark_command.json",
+      "source_sha256": "d9484397667995129137488d1d1cb1bfebe9e77cee34ac0317ffe273f76d6fe5",
+      "archive_sha256": "d9484397667995129137488d1d1cb1bfebe9e77cee34ac0317ffe273f76d6fe5",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/plugin/benchmark_succeeded.ok",
+      "archive": "results/native2d_plugin_20261012/plugin/benchmark_succeeded.ok",
+      "source_sha256": "b6397de5ee538384c001c7103b6757a070590f0ef41f18a6ad7e4a0a09d3b31f",
+      "archive_sha256": "b6397de5ee538384c001c7103b6757a070590f0ef41f18a6ad7e4a0a09d3b31f",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/plugin/environment.json",
+      "archive": "results/native2d_plugin_20261012/plugin/environment.json",
+      "source_sha256": "b67d7cb48b9dd06b948b44e7817c9da74ed3c9f0f256da18bad3a9e97fb07209",
+      "archive_sha256": "b67d7cb48b9dd06b948b44e7817c9da74ed3c9f0f256da18bad3a9e97fb07209",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/plugin/long_16k_math_check.json",
+      "archive": "results/native2d_plugin_20261012/plugin/long_16k_math_check.json",
+      "source_sha256": "098f412d6fd72f2ed41e72c25cea22191e4c485be14013aca7823c04704a550e",
+      "archive_sha256": "098f412d6fd72f2ed41e72c25cea22191e4c485be14013aca7823c04704a550e",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/plugin/numerics.json",
+      "archive": "results/native2d_plugin_20261012/plugin/numerics.json",
+      "source_sha256": "5fcf98a0da277e5de28fbeffb3b5da40ddbed7925d2183cfa51470ec6957ba54",
+      "archive_sha256": "5fcf98a0da277e5de28fbeffb3b5da40ddbed7925d2183cfa51470ec6957ba54",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/plugin/serve_command.json",
+      "archive": "results/native2d_plugin_20261012/plugin/serve_command.json",
+      "source_sha256": "57a931d820e5ab1d657dfe22738924d71003aba0bf2ede90d3bb26b39c509a0e",
+      "archive_sha256": "57a931d820e5ab1d657dfe22738924d71003aba0bf2ede90d3bb26b39c509a0e",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/plugin/short_math_check.json",
+      "archive": "results/native2d_plugin_20261012/plugin/short_math_check.json",
+      "source_sha256": "e6b4925176899349cd101d8611fc41e85af9f33462432f9e44607354b6134324",
+      "archive_sha256": "e6b4925176899349cd101d8611fc41e85af9f33462432f9e44607354b6134324",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/plugin/stage_succeeded.ok",
+      "archive": "results/native2d_plugin_20261012/plugin/stage_succeeded.ok",
+      "source_sha256": "4ea961ee74219f25633575ffd6c83f835ecfe521ef1b444affc5e51ad9bfa3b4",
+      "archive_sha256": "4ea961ee74219f25633575ffd6c83f835ecfe521ef1b444affc5e51ad9bfa3b4",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/plugin/summary.json",
+      "archive": "results/native2d_plugin_20261012/plugin/summary.json",
+      "source_sha256": "efe24bff6594ba4133533884fc9153d0ecb5ea06c3ee5470870a9a7d7d0f046c",
+      "archive_sha256": "efe24bff6594ba4133533884fc9153d0ecb5ea06c3ee5470870a9a7d7d0f046c",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/plugin/vllm_source_changes.json",
+      "archive": "results/native2d_plugin_20261012/plugin/vllm_source_changes.json",
+      "source_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "archive_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/run.exit",
+      "archive": "results/native2d_plugin_20261012/run.exit",
+      "source_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "archive_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/run_manifest.json",
+      "archive": "results/native2d_plugin_20261012/run_manifest.json",
+      "source_sha256": "9a2fc2830bcc844f8bfa334704d6b008dc3ab6b761d4b8bc9bd35f057191fe6a",
+      "archive_sha256": "9a2fc2830bcc844f8bfa334704d6b008dc3ab6b761d4b8bc9bd35f057191fe6a",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/plugin/warmup.log",
+      "archive": "results/native2d_plugin_20261012/plugin/warmup.txt",
+      "source_sha256": "4de99a59bfd13dac0ec3efbd59775ac190f03b547d9b4105cae7aff559897ec3",
+      "archive_sha256": "4de99a59bfd13dac0ec3efbd59775ac190f03b547d9b4105cae7aff559897ec3",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/plugin/decode_4k.log",
+      "archive": "results/native2d_plugin_20261012/plugin/decode_4k.txt",
+      "source_sha256": "2f11d69d4c46bd38a217c4badaa4a504c675b88b97045b455c9691dd8d3129e6",
+      "archive_sha256": "2f11d69d4c46bd38a217c4badaa4a504c675b88b97045b455c9691dd8d3129e6",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/plugin/long_16k.log",
+      "archive": "results/native2d_plugin_20261012/plugin/long_16k.txt",
+      "source_sha256": "17391c1fe7dcd60232a10c0ecf2b1b7cfc7eb538fce09692ec33f39fec7b2c0e",
+      "archive_sha256": "17391c1fe7dcd60232a10c0ecf2b1b7cfc7eb538fce09692ec33f39fec7b2c0e",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/legacy_reference/warmup.log",
+      "archive": "results/native2d_plugin_20261012/legacy_reference/warmup.txt",
+      "source_sha256": "70942d9e6509d52929c9e4f9a84e7f13475beb311fa8fb1bbeaf0e903f249954",
+      "archive_sha256": "70942d9e6509d52929c9e4f9a84e7f13475beb311fa8fb1bbeaf0e903f249954",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/legacy_reference/decode_4k.log",
+      "archive": "results/native2d_plugin_20261012/legacy_reference/decode_4k.txt",
+      "source_sha256": "79dd8e329509138b83bd7fcec8b53c07c84d50ed76f9198f82882a210fb89659",
+      "archive_sha256": "79dd8e329509138b83bd7fcec8b53c07c84d50ed76f9198f82882a210fb89659",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/legacy_reference/long_16k.log",
+      "archive": "results/native2d_plugin_20261012/legacy_reference/long_16k.txt",
+      "source_sha256": "7016775203c4c43723a5305b4848af6ac9d83eb22b30ea8287d2342e801b3539",
+      "archive_sha256": "7016775203c4c43723a5305b4848af6ac9d83eb22b30ea8287d2342e801b3539",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/completion_verified.json",
+      "archive": "results/native2d_plugin_20261012/completion_verified.json",
+      "source_sha256": "fe633368455b68e73a819bd846f4fd58d1cd06e36d7a51c8732dbb63363037ca",
+      "archive_sha256": "fe633368455b68e73a819bd846f4fd58d1cd06e36d7a51c8732dbb63363037ca",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/installed_source_audit.json",
+      "archive": "results/native2d_plugin_20261012/installed_source_audit.json",
+      "source_sha256": "4e6604bfbb7584e58e9f0f770cf8e2049454e4fa1ff3ff861afbdd79984b1eca",
+      "archive_sha256": "4e6604bfbb7584e58e9f0f770cf8e2049454e4fa1ff3ff861afbdd79984b1eca",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_plugin_20261012/complete/SHA256SUMS.txt",
+      "archive": "results/native2d_plugin_20261012/SOURCE_SHA256SUMS.txt",
+      "source_sha256": "f09217f10370ed1751d804b6105dc862abfb45cd9e304bdcfeed6b37eef689bb",
+      "archive_sha256": "f09217f10370ed1751d804b6105dc862abfb45cd9e304bdcfeed6b37eef689bb",
+      "sanitized": false
     }
   ],
   "updated_date": "2026-10-12"

@@ -1,0 +1,11 @@
+{
+  "python_source_count": 5426,
+  "plugin_changed_sources": [],
+  "plugin_before_manifest_sha256": "dbcb2f79f2e39560432369c8da0fdb1a64f17db3f7a7c1b432353d61ee48f88b",
+  "plugin_after_manifest_sha256": "dbcb2f79f2e39560432369c8da0fdb1a64f17db3f7a7c1b432353d61ee48f88b",
+  "legacy_changed_sources": [
+    "v1/attention/backends/triton_attn.py",
+    "v1/attention/ops/triton_unified_attention.py"
+  ],
+  "full_source_manifests": "preserved in private complete directory, not repeated in compact Git archive"
+}

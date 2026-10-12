@@ -1,0 +1,29 @@
+{
+  "verified_date": "2026-10-12",
+  "execution_commit": "e86fd22fb77c0c0220f54b0ea7b565259393a5ea",
+  "overall_exit": 0,
+  "completed_at_china": "2026-10-12 12:30:31",
+  "cpu_selection_tests_passed": 4,
+  "forward_and_launch_ast_match_validated_patch": true,
+  "gpu_numeric_cases": 11,
+  "all_gpu_outputs_bitwise_match_legacy": true,
+  "dense_max_abs_error": 0.00012997910380363464,
+  "deterministic_short_and_16379_token_answers_identical": true,
+  "benchmark_requests_per_variant": 97,
+  "all_requests_and_token_counts_complete": true,
+  "prefix_cache_hits": 0,
+  "preemptions": 0,
+  "installed_vllm_python_source_count": 5426,
+  "installed_vllm_python_sources_unchanged": true,
+  "plugin_backend_and_route_invocation_confirmed": true,
+  "all_checksums_passed": true,
+  "report_independently_recalculated": true,
+  "personal_containers_deleted": true,
+  "official_serve_compilation": {
+    "cudagraph_mode": "FULL_DECODE_ONLY"
+  },
+  "math500_rerun": false,
+  "official_four_round_rerun": false,
+  "context_threshold_8192_enabled": false,
+  "flaggems_commit": "a7620cc191a0b42e040194622c5758b22a7a25dc"
+}

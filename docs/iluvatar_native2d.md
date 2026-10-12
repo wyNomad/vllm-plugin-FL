@@ -54,3 +54,15 @@ the same official service arguments, saves commands and raw metrics, checks
 deterministic short/16k answers, and hashes the installed vLLM Python sources
 before and after the plugin stage. Short workloads establish migration
 equivalence; they do not replace the official four-round/Math500 acceptance.
+
+### Verified migration (2026-10-12)
+
+Execution commit e86fd22 passed 4 CPU selection checks, function AST equivalence,
+11 GPU cases with bitwise equality to the first-version oracle and a dense
+reference (max absolute error 1.30e-4), and identical short/16,379-token answers.
+All 5,426 installed vLLM Python source files remained byte-identical. Each
+variant completed 97 benchmark requests with full token counts, no cache hits
+or preemptions, and container cleanup. The plugin differed from the legacy
+patch by -0.53% on the short 4k case and +0.04% on short 16k. See the archived
+migration report. Full Math500 and official four-round acceptance were not
+repeated; the known formal 4k regression is not fixed by this migration.

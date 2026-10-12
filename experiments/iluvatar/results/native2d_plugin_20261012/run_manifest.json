@@ -1,0 +1,13 @@
+{
+  "plugin_commit": "e86fd22fb77c0c0220f54b0ea7b565259393a5ea",
+  "started_at": "2026-10-12T04:00:56.494763+00:00",
+  "stages": [
+    "plugin",
+    "legacy_reference"
+  ],
+  "gpu": 1,
+  "new_routing_policy": false,
+  "official_serve_compilation": {
+    "cudagraph_mode": "FULL_DECODE_ONLY"
+  }
+}

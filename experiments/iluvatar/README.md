@@ -59,3 +59,7 @@ Native 2D 对容器内安装的 vLLM 0.24 打补丁。可在原固定镜像的�
 ## 重复性实验
 
 第一版 Native 2D 的反向顺序复测方案与后台监督脚本见 `repeatability/README.md`。固定同 GPU 1、同补丁和原版四轮测试，使用独立结果目录；10/12已完成并验收，报告与原始CSV见 `results/native2d_repeat_20261011/`；完整原件与监督日志已下载本地。
+
+## 插件迁移
+
+第一版Native2D已迁入插件自有backend与launch wrapper，默认关闭开关VLLM_FL_ILUVATAR_NATIVE2D=1。迁移验证报告见results/native2d_plugin_20261012/；同卡短版相对旧补丁4k -0.53%、16k +0.04%，安装5426份vLLM.py源码全部保持原样。当前开发分支perf/iluvatar-native2d-plugin，原实验归档分支与旧方案保留。原4k正式回退未修复，不能把本轮短版当新的比赛成绩。
