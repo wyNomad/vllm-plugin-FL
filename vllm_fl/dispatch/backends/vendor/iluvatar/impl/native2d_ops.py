@@ -68,7 +68,28 @@ def unified_attention(
     # The non-TD branch is dead-code-eliminated at Triton compile time so
     # disabling this flag costs nothing.
     use_td: bool = False,
+    _context_route: str | None = None,
 ):
+    policy = os.environ.get("VLLM_FL_ILUVATAR_NATIVE2D_POLICY", "native")
+    if policy not in ("native", "prefill", "context"):
+        raise ValueError("Native 2D policy must be native, prefill, or context")
+    # Capture both paths. GPU guards use each request's live seq_lens, so
+    # replay and mixed-length batches do not freeze a host-side max length.
+    if (
+        policy == "context" and _context_route is None
+        and os.environ.get("VLLM_FL_ILUVATAR_NATIVE2D") == "1"
+        and max_seqlen_q == 1 and len(seqused_k) >= 16
+        and kv_quant_mode == KVQuantMode.NONE and not use_td
+        and q.shape[2] == 128 and q.shape[1] // k.shape[2] == 8
+        and not is_batch_invariant
+    ):
+        arguments = locals().copy()
+        arguments.pop("policy")
+        arguments["_context_route"] = "short"
+        unified_attention(**arguments)
+        arguments["_context_route"] = "long"
+        unified_attention(**arguments)
+        return
     # Resolve causal: bool or per-seq tensor.
     use_per_seq_causal = isinstance(causal, torch.Tensor)
     use_causal = bool(causal) if not use_per_seq_causal else True
@@ -139,7 +160,9 @@ def unified_attention(
         and head_size == 128
         and num_queries_per_kv == 8
         and not use_td
-        and (max_seqlen_q > 1 or num_seqs >= 16)
+        and (max_seqlen_q > 1 or (
+            num_seqs >= 16 and policy != "prefill" and _context_route != "short"
+        ))
     )
     if native2d_probe:
         BLOCK_M = 128
@@ -250,9 +273,9 @@ def unified_attention(
         _native2d_probe_hits += 1
         if _native2d_probe_hits in (1, 10, 100, 1000):
             logger.info(
-                "NATIVE2D_PLUGIN hit=%s seqs=%s max_q=%s block_m=%s tile=%s",
+                "NATIVE2D_PLUGIN hit=%s seqs=%s max_q=%s block_m=%s tile=%s policy=%s route=%s",
                 _native2d_probe_hits, num_seqs, max_seqlen_q,
-                BLOCK_M, TILE_SIZE_PREFILL,
+                BLOCK_M, TILE_SIZE_PREFILL, policy, _context_route,
             )
 
     # The kernel signature is the same for 2D and 3D — only the launch
@@ -294,7 +317,16 @@ def unified_attention(
     if launch_num_stages is not None:
         launch_kwargs["num_stages"] = launch_num_stages
 
-    kernel_unified_attention[grid](
+    attention_kernel = kernel_unified_attention
+    segment_reducer = reduce_segments
+    route_kwargs = {}
+    if _context_route is not None:
+        from . import native2d_context_kernels
+        attention_kernel = native2d_context_kernels.kernel_unified_attention
+        segment_reducer = native2d_context_kernels.reduce_segments
+        route_kwargs = {"ROUTE_THRESHOLD": 8192, "ROUTE_LONG": _context_route == "long"}
+
+    attention_kernel[grid](
         output_ptr=out,
         segm_output_ptr=segm_output_ptr,
         segm_max_ptr=segm_max_ptr,
@@ -366,11 +398,12 @@ def unified_attention(
         CHUNK_SIZE=chunk_size,
         USE_TD=use_td,
         USE_TD_QO=use_td_qo,
+        **route_kwargs,
         **launch_kwargs,
     )
 
     if use_3d:
-        reduce_segments[(q.shape[0], num_query_heads)](
+        segment_reducer[(q.shape[0], num_query_heads)](
             output_ptr=out,
             segm_output_ptr=softmax_segm_output,
             segm_max_ptr=softmax_segm_max,
@@ -389,4 +422,5 @@ def unified_attention(
             BLOCK_Q=BLOCK_Q,
             NUM_SEGMENTS_PER_SEQ=num_par_softmax_segments,
             USE_FP8=output_scale is not None,
+            **route_kwargs,
         )
