@@ -1,5 +1,5 @@
 {
-  "snapshot_date": "2026-10-11",
+  "snapshot_date": "2026-10-12",
   "entries": [
     {
       "source": ".dockerignore",
@@ -1460,8 +1460,8 @@
     {
       "source": "比赛进度.md",
       "archive": "PROGRESS.md",
-      "source_sha256": "a4b22b7f91380c8f9278d15f603fa364e8aee77c6176b90fe50001ccc75d1d91",
-      "archive_sha256": "a4b22b7f91380c8f9278d15f603fa364e8aee77c6176b90fe50001ccc75d1d91",
+      "source_sha256": "efd75aff477fd36dba0451c3282fc0217b58c5161aa5f21fedad79008d0d4686",
+      "archive_sha256": "efd75aff477fd36dba0451c3282fc0217b58c5161aa5f21fedad79008d0d4686",
       "sanitized": false
     },
     {
@@ -1903,6 +1903,55 @@
       "archive": "results/native2d_plugin_20261012/SOURCE_SHA256SUMS.txt",
       "source_sha256": "f09217f10370ed1751d804b6105dc862abfb45cd9e304bdcfeed6b37eef689bb",
       "archive_sha256": "f09217f10370ed1751d804b6105dc862abfb45cd9e304bdcfeed6b37eef689bb",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_context_20261012_numeric_v2/REPORT.md",
+      "archive": "results/native2d_context_20261012_numeric_v2/REPORT.md",
+      "source_sha256": "765ca6eed3d493491eb56e273767c4d99f1fd790a6580a99e1f6cb8b7e608fc2",
+      "archive_sha256": "765ca6eed3d493491eb56e273767c4d99f1fd790a6580a99e1f6cb8b7e608fc2",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_context_20261012_numeric_v2/SOURCE_SHA256SUMS.txt",
+      "archive": "results/native2d_context_20261012_numeric_v2/SOURCE_SHA256SUMS.txt",
+      "source_sha256": "ba4e1da57a218bd4862d066b1dc2ef23eb1fd7159dec499888b4dfc297a6bc29",
+      "archive_sha256": "ba4e1da57a218bd4862d066b1dc2ef23eb1fd7159dec499888b4dfc297a6bc29",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_context_20261012_numeric_v2/evidence/container_stop.log",
+      "archive": "results/native2d_context_20261012_numeric_v2/container_stop.log",
+      "source_sha256": "a4d7a64a440efdf19bb3ad9856750d5bd19d01811e688f117acf0e87b89f7952",
+      "archive_sha256": "a4d7a64a440efdf19bb3ad9856750d5bd19d01811e688f117acf0e87b89f7952",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_context_20261012_numeric_v2/evidence/manifest.json",
+      "archive": "results/native2d_context_20261012_numeric_v2/manifest.json",
+      "source_sha256": "6cbb05e80565ada3c8d9b3f5ea03c232a248981d02711bf9bc86659a42c4a293",
+      "archive_sha256": "6cbb05e80565ada3c8d9b3f5ea03c232a248981d02711bf9bc86659a42c4a293",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_context_20261012_numeric_v2/evidence/numerics.json",
+      "archive": "results/native2d_context_20261012_numeric_v2/numerics.json",
+      "source_sha256": "b9c452861249a705a922f6be63d552b7764ff8ed5e0746ee2de480f64337ea18",
+      "archive_sha256": "b9c452861249a705a922f6be63d552b7764ff8ed5e0746ee2de480f64337ea18",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_context_20261012_numeric_v2/evidence/numerics.log",
+      "archive": "results/native2d_context_20261012_numeric_v2/numerics.log",
+      "source_sha256": "35b2a194ad8f3b782d6d174393ff2fe0b30f2a3d3736211a4a7bbc0af2d21f2a",
+      "archive_sha256": "35b2a194ad8f3b782d6d174393ff2fe0b30f2a3d3736211a4a7bbc0af2d21f2a",
+      "sanitized": false
+    },
+    {
+      "source": "results/native2d_context_20261012_numeric_v2/evidence/run.exit",
+      "archive": "results/native2d_context_20261012_numeric_v2/run.exit",
+      "source_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "archive_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
       "sanitized": false
     }
   ],

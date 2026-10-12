@@ -84,7 +84,24 @@ kernel AST except explicit early-return guards and their constexpr arguments.
 graph across 4096, 8191, 8192, 16384 and mixed lengths, against native/first-version
 outputs and dense attention; it also times all three policies and the baseline.
 Dummy capture length 1 above the original 64-sequence 3D threshold is separately
-reported because an upstream eager call reproduces a dense-reference discrepancy.
-It is not counted as a dense numerical pass. Real workload lengths must pass.
+reported because upstream eager execution reproduced its dense-reference discrepancy
+in the completed corrected check. This dummy case is not counted as a dense
+numerical pass. Real workload lengths must pass.
 The representative screen uses 4k input / 1024 output / 64 requests and a short
 16k preservation case. Its results are not the official four-round score.
+
+### Completed GPU screen diagnostics
+
+Execution commit 197610d passed 34 dense checks (maximum error 1.87e-5) and
+36 graph/oracle comparisons with bitwise equality. Two dummy length=1 checks
+above the original 64-sequence 3D threshold are recorded separately; unmodified
+upstream eager execution reproduced them. BF16, 64-sequence pure decode:
+baseline/native-first/prefill-only latency was 1600.48/2543.48/1600.94 us at 4k
+and 5906.94/10053.27/5905.99 us at 16k. Native 3D was faster at both contexts,
+so prefill-only is the current service candidate. These are kernel timings,
+not end-to-end or official gains. A same-GPU3 screen is running.
+
+`run_acceptance.py` gates on a completed screen, then runs candidate Math500
+and baseline/candidate official four-round throughput in new containers. It
+checks all request/token counts, recomputes the three counted rounds and
+requires both 4k/16k throughput and TTFT to meet the competition 1% gates.

@@ -16,7 +16,7 @@ util = module_from_spec(spec)
 spec.loader.exec_module(util)
 
 
-def stage(name, policy, gpu, root, commit):
+def stage(name, policy, gpu, root, commit, workload=None):
     directory = root / name
     directory.mkdir(exist_ok=False)
     assert util.run(['git', '-C', str(REPO), 'rev-parse', 'HEAD']) == commit
@@ -46,13 +46,16 @@ def stage(name, policy, gpu, root, commit):
             util.common.wait_ready(service)
             print('SERVICE READY', name, util.stamp(), flush=True)
             util.correctness(directory)
-            (root / 'current_stage.txt').write_text(name + ': seeded throughput running\n')
-            command = ['docker', 'exec', util.common.NAME, 'python3',
-                       '/workspace/vllm-plugin-FL/experiments/iluvatar/native2d_context/service_checks.py',
-                       '/workspace/benchmark_results/' + root.name, name]
-            util.record(directory, 'benchmark_command.json', command)
-            with (directory / 'bench.log').open('w') as out:
-                subprocess.run(command, check=True, stdout=out, stderr=subprocess.STDOUT, timeout=7200)
+            if workload is not None:
+                workload(directory)
+            else:
+                (root / 'current_stage.txt').write_text(name + ': seeded throughput running\n')
+                command = ['docker', 'exec', util.common.NAME, 'python3',
+                           '/workspace/vllm-plugin-FL/experiments/iluvatar/native2d_context/service_checks.py',
+                           '/workspace/benchmark_results/' + root.name, name]
+                util.record(directory, 'benchmark_command.json', command)
+                with (directory / 'bench.log').open('w') as out:
+                    subprocess.run(command, check=True, stdout=out, stderr=subprocess.STDOUT, timeout=7200)
         after = util.installed_sources()
         assert before == after, 'installed vLLM sources changed'
         util.record(directory, 'source_audit.json', dict(file_count=len(before), changed=[], sha256=before))

@@ -1,0 +1,52 @@
+INFO 10-12 13:22:37 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 10-12 13:22:37 [__init__.py:46] - fl -> vllm_fl:register
+INFO 10-12 13:22:37 [__init__.py:58] Loading plugin fl
+/workspace/FlagGems/src/flag_gems/utils/libentry.py:728: DeprecationWarning: use_cuda_graph is deprecated; use benchmark_mode='replay' or benchmark_mode='event'
+  super().__init__(*args, **kwargs)
+/workspace/FlagGems/src/flag_gems/utils/libentry.py:411: RuntimeWarning: active Triton backend does not provide a replay benchmarker; falling back to event timing
+  resolved_benchmark = resolve_benchmarker(
+INFO 10-12 13:22:44 [__init__.py:237] Platform plugin fl is activated
+/usr/local/lib/python3.12/site-packages/torch/jit/_script.py:362: DeprecationWarning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+[2026-10-12 13:22:48] [INFO] [vllm_fl.dispatch.backends.vendor.iluvatar.iluvatar] patch_sampler_compile_for_iluvatar: unwrapped topk_topp_sampler.compiled_random_sample
+[2026-10-12 13:22:48] [INFO] [vllm_fl.dispatch.backends.vendor.iluvatar.iluvatar] patch_sampler_compile_for_iluvatar: unwrapped logprobs.batched_count_greater_than
+[2026-10-12 13:22:48] [INFO] [vllm_fl.dispatch.backends.vendor.iluvatar.iluvatar] patch_torch_inductor_for_iluvatar: backend '['iluvatar']' already supports target='cuda', no GPUTarget remap needed.
+[2026-10-12 13:22:50] [INFO] [vllm_fl.dispatch.backends.vendor.iluvatar.impl.native2d_ops] NATIVE2D_PLUGIN hit=1 seqs=16 max_q=1 block_m=128 tile=16 policy=native route=None
+{"sequences": 16, "dtype": "torch.float16", "context": 1, "replay_max_abs_error": 0.0, "dense_max_abs_error": 0.0, "dense_checked": true}
+{"sequences": 16, "dtype": "torch.float16", "context": 4096, "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.8551945686340332e-06, "dense_checked": true, "graph_latency_us": {"baseline": 431.7753601074219, "native": 879.1777038574219, "context": 415.0553894042969, "prefill": 408.99749755859375}}
+{"sequences": 16, "dtype": "torch.float16", "context": 8191, "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.218169927597046e-06, "dense_checked": true}
+{"sequences": 16, "dtype": "torch.float16", "context": 8192, "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.2351665645837784e-06, "dense_checked": true}
+{"sequences": 16, "dtype": "torch.float16", "context": 16384, "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.0742805898189545e-06, "dense_checked": true, "graph_latency_us": {"baseline": 1489.2892456054688, "native": 3471.66259765625, "context": 3490.6201171875, "prefill": 1480.8905029296875}}
+{"sequences": 16, "dtype": "torch.float16", "context": "mixed", "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.8551945686340332e-06, "dense_checked": true}
+[2026-10-12 13:22:55] [INFO] [vllm_fl.dispatch.backends.vendor.iluvatar.impl.native2d_ops] NATIVE2D_PLUGIN hit=10 seqs=64 max_q=1 block_m=128 tile=16 policy=native route=None
+{"sequences": 64, "dtype": "torch.float16", "context": 1, "replay_max_abs_error": 0.0, "dense_max_abs_error": 0.0, "dense_checked": true}
+{"sequences": 64, "dtype": "torch.float16", "context": 4096, "replay_max_abs_error": 0.0, "dense_max_abs_error": 2.0437873899936676e-06, "dense_checked": true, "graph_latency_us": {"baseline": 1599.8536682128906, "native": 2527.3306274414062, "context": 1604.444580078125, "prefill": 1601.7024230957031}}
+{"sequences": 64, "dtype": "torch.float16", "context": 8191, "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.1487863957881927e-06, "dense_checked": true}
+{"sequences": 64, "dtype": "torch.float16", "context": 8192, "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.2272503226995468e-06, "dense_checked": true}
+{"sequences": 64, "dtype": "torch.float16", "context": 16384, "replay_max_abs_error": 0.0, "dense_max_abs_error": 9.594950824975967e-07, "dense_checked": true, "graph_latency_us": {"baseline": 5904.43115234375, "native": 10030.763549804688, "context": 10224.404296875, "prefill": 5906.6033935546875}}
+{"sequences": 64, "dtype": "torch.float16", "context": "mixed", "replay_max_abs_error": 0.0, "dense_max_abs_error": 2.0437873899936676e-06, "dense_checked": true}
+{"sequences": 96, "dtype": "torch.float16", "context": 1, "replay_max_abs_error": 0.0, "dense_max_abs_error": 0.1649169921875, "dense_checked": false, "upstream_eager_dense_max_abs_error": 0.1649169921875, "note": "capture-only dummy length; upstream eager reproduces discrepancy"}
+{"sequences": 96, "dtype": "torch.float16", "context": 4096, "replay_max_abs_error": 0.0, "dense_max_abs_error": 2.991408109664917e-06, "dense_checked": true, "graph_latency_us": {"baseline": 2298.7608337402344, "native": 3569.9420166015625, "context": 2318.9208984375, "prefill": 2300.0192260742188}}
+{"sequences": 96, "dtype": "torch.float16", "context": 8191, "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.4682300388813019e-06, "dense_checked": true}
+{"sequences": 96, "dtype": "torch.float16", "context": 8192, "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.1541415005922318e-06, "dense_checked": true}
+{"sequences": 96, "dtype": "torch.float16", "context": 16384, "replay_max_abs_error": 0.0, "dense_max_abs_error": 9.774230420589447e-07, "dense_checked": true, "graph_latency_us": {"baseline": 9105.781860351562, "native": 14102.13623046875, "context": 14227.2216796875, "prefill": 9112.569580078125}}
+{"sequences": 96, "dtype": "torch.float16", "context": "mixed", "replay_max_abs_error": 0.0, "dense_max_abs_error": 2.991408109664917e-06, "dense_checked": true}
+{"sequences": 16, "dtype": "torch.bfloat16", "context": 1, "replay_max_abs_error": 0.0, "dense_max_abs_error": 0.0, "dense_checked": true}
+{"sequences": 16, "dtype": "torch.bfloat16", "context": 4096, "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.8726568669080734e-05, "dense_checked": true, "graph_latency_us": {"baseline": 420.89134216308594, "native": 889.3636322021484, "context": 409.4198226928711, "prefill": 408.2598114013672}}
+{"sequences": 16, "dtype": "torch.bfloat16", "context": 8191, "replay_max_abs_error": 0.0, "dense_max_abs_error": 8.534174412488937e-06, "dense_checked": true}
+{"sequences": 16, "dtype": "torch.bfloat16", "context": 8192, "replay_max_abs_error": 0.0, "dense_max_abs_error": 9.699957445263863e-06, "dense_checked": true}
+{"sequences": 16, "dtype": "torch.bfloat16", "context": 16384, "replay_max_abs_error": 0.0, "dense_max_abs_error": 9.116483852267265e-06, "dense_checked": true, "graph_latency_us": {"baseline": 1482.4906921386719, "native": 3449.7714233398438, "context": 3495.701904296875, "prefill": 1484.1360473632812}}
+{"sequences": 16, "dtype": "torch.bfloat16", "context": "mixed", "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.8726568669080734e-05, "dense_checked": true}
+{"sequences": 64, "dtype": "torch.bfloat16", "context": 1, "replay_max_abs_error": 0.0, "dense_max_abs_error": 0.0, "dense_checked": true}
+{"sequences": 64, "dtype": "torch.bfloat16", "context": 4096, "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.5832018107175827e-05, "dense_checked": true, "graph_latency_us": {"baseline": 1600.4794311523438, "native": 2543.4814453125, "context": 1602.9222106933594, "prefill": 1600.9420776367188}}
+{"sequences": 64, "dtype": "torch.bfloat16", "context": 8191, "replay_max_abs_error": 0.0, "dense_max_abs_error": 9.377487003803253e-06, "dense_checked": true}
+{"sequences": 64, "dtype": "torch.bfloat16", "context": 8192, "replay_max_abs_error": 0.0, "dense_max_abs_error": 9.302981197834015e-06, "dense_checked": true}
+{"sequences": 64, "dtype": "torch.bfloat16", "context": 16384, "replay_max_abs_error": 0.0, "dense_max_abs_error": 8.381204679608345e-06, "dense_checked": true, "graph_latency_us": {"baseline": 5906.943359375, "native": 10053.267822265625, "context": 10212.859497070312, "prefill": 5905.989990234375}}
+{"sequences": 64, "dtype": "torch.bfloat16", "context": "mixed", "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.5832018107175827e-05, "dense_checked": true}
+{"sequences": 96, "dtype": "torch.bfloat16", "context": 1, "replay_max_abs_error": 0.0, "dense_max_abs_error": 0.1337890625, "dense_checked": false, "upstream_eager_dense_max_abs_error": 0.1337890625, "note": "capture-only dummy length; upstream eager reproduces discrepancy"}
+{"sequences": 96, "dtype": "torch.bfloat16", "context": 4096, "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.8105842173099518e-05, "dense_checked": true, "graph_latency_us": {"baseline": 2300.089111328125, "native": 3573.375244140625, "context": 2320.1025390625, "prefill": 2298.050994873047}}
+{"sequences": 96, "dtype": "torch.bfloat16", "context": 8191, "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.0712537914514542e-05, "dense_checked": true}
+{"sequences": 96, "dtype": "torch.bfloat16", "context": 8192, "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.0891351848840714e-05, "dense_checked": true}
+{"sequences": 96, "dtype": "torch.bfloat16", "context": 16384, "replay_max_abs_error": 0.0, "dense_max_abs_error": 8.109025657176971e-06, "dense_checked": true, "graph_latency_us": {"baseline": 9111.719970703125, "native": 14107.552490234375, "context": 14223.8525390625, "prefill": 9108.084716796875}}
+{"sequences": 96, "dtype": "torch.bfloat16", "context": "mixed", "replay_max_abs_error": 0.0, "dense_max_abs_error": 1.8105842173099518e-05, "dense_checked": true}
+CONTEXT ROUTING GPU NUMERICS AND GRAPH REPLAY PASSED

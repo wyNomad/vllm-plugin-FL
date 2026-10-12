@@ -91,8 +91,8 @@ def check(sequences, dtype):
         assert torch.isfinite(actual).all(), 'routing skipped a live output'
         torch.testing.assert_close(actual, expected, atol=2e-3, rtol=2e-2)
         torch.testing.assert_close(graphs['prefill'][1], graphs['baseline'][1], atol=2e-3, rtol=2e-2)
-        # The unmodified upstream 2D kernel has a dummy length=1 discrepancy
-        # above its 3D batch threshold. Check it against an eager upstream call
+        # A dummy length=1 discrepancy appeared above the 3D batch threshold.
+        # Verify whether an unmodified eager upstream call reproduces it
         # separately; all real 4k/16k/boundary/mixed contexts must pass dense.
         capture_dummy = sequences > 64 and length == 1
         row = dict(sequences=sequences, dtype=str(dtype), context=length,
