@@ -176,6 +176,15 @@ class FlagGemsBackend(Backend):
         if use_sparse:
             raise ValueError("use_sparse=True requires use_mla=True.")
 
+        from vllm.platforms import current_platform
+        from vllm_fl.attention.native2d_selection import native2d_backend_path
+
+        native2d_path = native2d_backend_path(
+            getattr(current_platform, "vendor_name", "")
+        )
+        if native2d_path is not None:
+            return native2d_path
+
         use_hybrid_attn = os.environ.get(
             "VLLM_FL_USE_HYBRID_ATTN", "0"
         ).lower() in ("1", "true", "yes")

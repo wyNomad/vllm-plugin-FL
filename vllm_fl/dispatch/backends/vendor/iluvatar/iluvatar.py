@@ -477,6 +477,12 @@ class IluvatarBackend(Backend):
                 return AttentionBackendEnum.FLASHMLA_SPARSE.get_path()
             return AttentionBackendEnum.FLASHMLA.get_path()
 
+        from vllm_fl.attention.native2d_selection import native2d_backend_path
+
+        native2d_path = native2d_backend_path("iluvatar")
+        if native2d_path is not None:
+            return native2d_path
+
         # flash_attn is not available on iluvatar. Use TRITON_ATTN (the vllm
         # default). The tl.make_tensor_descriptor stub and perf model patches
         # are already applied at module level (above), so triton JIT's
